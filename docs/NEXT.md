@@ -41,6 +41,7 @@ Estimates are session time (1–2 h each).
   Staging Supabase project in its own organization (free tier needs a free slot: the owner's two free projects may be taken, see Kindred's T04); email sign-in with code (Q1); migration pushed.
   Railway project `calorie-snap` from this repo (Node 22), env vars from `.env.example`, `SITE_PASSWORD` on staging, `ANTHROPIC_API_KEY` with a monthly spend limit set in the Anthropic console. PR environments on.
   Done when: staging `/api/health` reports the database reachable, and an email code signs in on staging.
+  **Code ready (2026-11-25, PR #4):** Supabase env vars, `src/lib/db/admin.ts`, `/api/health` reports the database, the `SITE_PASSWORD` curtain at `/gate` (`/demo` and `/api` outside it), smoke tests against a local Supabase. Left for the owner: a Supabase project (the two free slots are taken by `lash-staging` and `aquatix-staging`, see Kindred's T04), Railway access to `MZauron/calorie-snap`, an Anthropic spend limit; then Claude pushes the migration, sets the variables and checks "done when".
 
 ### Phase 1 · The core loop
 - [ ] **T05 Sign in and eligibility** [laptop]

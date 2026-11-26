@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:smoke": "playwright test",
+    "test:smoke": "scripts/test-smoke.sh",
     "db:start": "supabase start",
     "db:stop": "supabase stop",
     "db:reset": "supabase db reset",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@date-fns/tz": "1.5.0",
+    "@supabase/supabase-js": "2.119.0",
     "date-fns": "4.4.0",
     "next": "16.4.6",
     "react": "19.3.0",
