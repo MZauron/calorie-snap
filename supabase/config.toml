@@ -1,0 +1,53 @@
+# Local Supabase for Calorie Snap (`npm run db:start`). Only what differs from the CLI defaults.
+# Ports are Lash's + 300 (Aquatix + 100, Kindred + 200), so all four projects can run on one laptop.
+# Reference: https://supabase.com/docs/guides/local-development/cli/config
+project_id = "calorie-snap"
+
+[api]
+enabled = true
+port = 54621
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54622
+shadow_port = 54620
+major_version = 17
+
+[db.pooler]
+enabled = false
+port = 54629
+
+[db.migrations]
+enabled = true
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54623
+
+# Development signs in through this local mail catcher (open http://127.0.0.1:54624): no real email provider until Q1 is decided.
+[local_smtp]
+enabled = true
+port = 54624
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:3000"
+additional_redirect_urls = ["http://localhost:3000"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+
+# Q1 default: email + 6-digit code. T05 adds the email template that shows the code.
+[auth.email]
+enable_signup = true
+enable_confirmations = false
+otp_length = 6
+otp_expiry = 600
+
+[analytics]
+enabled = false

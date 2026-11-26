@@ -1,3 +1,4 @@
+-- HISTORICAL DRAFT: since T03 the source of truth is supabase/tests (schema.test.ts runs these checks against a real local Supabase).
 -- Calorie Snap schema tests, draft 1 (2026-11-25).
 -- How it is run (no Supabase needed): a scratch Postgres, the stand-ins below for Supabase's roles and auth,
 -- then docs/schema.sql, then this file. Each check prints "PASS <label>" or stops with "FAIL <label>".

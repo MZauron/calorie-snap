@@ -31,7 +31,7 @@ Estimates are session time (1–2 h each).
   Create `docs/rules.test-cases.md`: every row of DESIGN.md "Worked numbers from the prototype", plus edge cases per rule (female minimum, cap binding, minimum binding, no check-in, empty days, today never Too low, model reply out of range), each with an id (`CS-05b`…), input and expected result. Test names reuse the ids.
   Done when: every case in the file has a test named by its id (a test enforces it, both ways); every worked number from the prototype passes; `no-clock.test.ts` fails if anything in `src/lib/rules` reads the clock or imports I/O.
 
-- [ ] **T03 Database: migration and tests** [phone]
+- [x] **T03 Database: migration and tests** [phone] — done 2026-11-25 (PR #3). Local ports 54620–54629. Every check runs in a rolled-back transaction, so a few expected counts differ from the draft's sequential script (e.g. Alex sees 2 check-ins, 1 daily-total row).
   `supabase init` (ports chosen so they don't clash with Lash's, Aquatix's or Kindred's local Supabase); `supabase/migrations/0001_init.sql` = `docs/schema.sql`.
   Turn `docs/schema.test.sql` into `supabase/tests` the way Kindred did (Vitest with `pg` against local Supabase, real roles and `request.jwt.claims` instead of the stand-ins).
   CI: a `db` job that runs `supabase start` and the tests; a `types` job that generates `src/lib/db/types.ts` and fails when it drifts from the migrations.
