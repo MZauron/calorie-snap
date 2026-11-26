@@ -8,7 +8,7 @@ Read CLAUDE.md + only the docs a task names.
 Estimates are session time (1–2 h each).
 
 ## Where we are (2026-11-25)
-- **Built:** nothing yet. In the repo, the starter kit: `CLAUDE.md`, `docs/DESIGN.md` (from the "Calorie Snap – App Mockup" prototype, on the owner's Next.js + Supabase stack, with the prototype's numbers as worked cases), `docs/schema.sql` + `docs/schema.test.sql` (checks passing on Postgres 16), `docs/QUESTIONS.md`.
+- **Built:** T01 scaffold (PR #1). In the repo, the starter kit: `CLAUDE.md`, `docs/DESIGN.md` (from the "Calorie Snap – App Mockup" prototype, on the owner's Next.js + Supabase stack, with the prototype's numbers as worked cases), `docs/schema.sql` + `docs/schema.test.sql` (checks passing on Postgres 16), `docs/QUESTIONS.md`.
 - **Next:** T01, T02 and T03 can run in parallel as phone sessions. Q1, Q3 and Q8 should be answered before T05 and T11.
 
 ## Plan
@@ -20,7 +20,7 @@ Estimates are session time (1–2 h each).
 ## Open tasks
 
 ### Phase 0 · Foundation
-- [ ] **T01 Scaffold the app** [phone]
+- [x] **T01 Scaffold the app** [phone] — done 2026-11-25 (PR #1). Railway PR environment waits for T04.
   Next.js App Router, TypeScript strict, Tailwind, zod, date-fns + @date-fns/tz, Vitest, ESLint, Playwright; exact versions (copy from `../playdate/package.json` if attached, else current stable).
   `.nvmrc` 22, `src/env.ts` (zod, fails fast; only the vars this task needs), `GET /api/health`, `.env.example`, README with the commands, `src/lib/i18n/en-CA.ts` (empty to start), Tailwind theme with the colours and radii of DESIGN.md "Visual design" (title font per Q20, self-hosted with `next/font`), a web manifest (name, green theme colour, placeholder icons).
   CI (GitHub Actions): install, lint, typecheck, test, build. Copy `security-headers.ts` (+ tests) and the CI workflow from `../playdate` if attached.

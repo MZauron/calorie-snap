@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Colours, radii and type: docs/DESIGN.md "Visual design" (read from the prototype, approximate). */
+@theme {
+  /* Primary (forest green): main buttons, the ring, selected chips, active tab, scan button, tips. */
+  --color-primary: #1f6b47;
+  --color-primary-tint: #e3f0e6;
+  /* Night (dark green): the Scan screen, "Your daily numbers", the encouragement card, dark buttons. */
+  --color-night: #121d17;
+  --color-night-card: #1e2a23;
+  /* Mint: the shutter, the "Eat up to" number, Quick add Continue on dark. */
+  --color-mint: #6ee0a6;
+  /* Macros: bars and numbers; the "You" line on the chart is the protein blue. */
+  --color-protein: #1d4fd8;
+  --color-carbs: #b5470f;
+  --color-fat: #6d35d8;
+  /* Over / warning: over bars, Too low, the safe-minimum box, check-in dots. Never red (CS-20). */
+  --color-over: #e0822f;
+  --color-over-text: #b4490f;
+  --color-over-tint: #fce5d4;
+  /* Simulated example banner (CS-21). */
+  --color-sample: #eee8fb;
+  --color-sample-text: #4b2a9a;
+  /* Page, cards, hairlines, text. */
+  --color-page: #f3f2ec;
+  --color-card: #ffffff;
+  --color-line: #e7e5dd;
+  --color-ink: #121a15;
+  --color-muted: #5f6b63;
+
+  /* 20 px cards with no shadow; 52 px buttons with 12–14 px corners; pill chips. */
+  --radius-card: 20px;
+  --radius-button: 14px;
+  --radius-chip: 999px;
+  --spacing-button: 52px;
+  --spacing-touch: 44px;
+
+  /* Titles and big numbers: a geometric grotesk (Space Grotesk 700, Q20 default), self-hosted by next/font. Body: the system font. */
+  --font-title: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-sans: system-ui, -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+
+  --text-title: 30px;
+  --text-number: 36px;
+  --text-label: 13px;
+  --text-body: 16px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+}

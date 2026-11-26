@@ -1,0 +1,18 @@
+node_modules/
+.env
+.env.local
+.env*.local
+.next/
+dist/
+build/
+coverage/
+supabase/.temp/
+supabase/.branches/
+.DS_Store
+playwright-report/
+test-results/
+next-env.d.ts
+*.tsbuildinfo
+
+# Claude Code worktrees (local only)
+.claude/worktrees/
