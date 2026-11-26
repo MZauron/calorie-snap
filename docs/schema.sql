@@ -1,3 +1,4 @@
+-- HISTORICAL DRAFT: since T03 the source of truth is supabase/migrations (0001_init.sql is this file) and supabase/tests.
 -- Calorie Snap schema, draft 1 (2026-11-25). Target: Supabase Postgres 15+.
 -- Source of truth for the first migration (T03 copies it to supabase/migrations/0001_init.sql).
 -- Rules referenced as CS-xx are in docs/DESIGN.md.

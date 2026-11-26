@@ -1,0 +1,1 @@
+-- Local seed data for `npm run db:reset`. Empty for now: sign-in and test users come with T05.
