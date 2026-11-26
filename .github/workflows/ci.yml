@@ -18,8 +18,13 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+        env:
+          # Placeholders: the build only needs the variables to exist (the app fails fast without them). Nothing here is a real key.
+          NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54621
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+          SUPABASE_SERVICE_ROLE_KEY: ci-placeholder
 
-  # The home page and /api/health at phone width, against a production build.
+  # The home page and /api/health at phone width, against a production build and a fresh local Supabase.
   smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -30,6 +35,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - name: Start the local Supabase (the health check reads the database)
+        run: npx supabase start -x imgproxy,mailpit,studio,edge-runtime,logflare,vector,supavisor,realtime,storage-api,postgres-meta
       - name: Install WebKit for Playwright
         run: npx playwright install --with-deps webkit
       - run: npm run test:smoke
@@ -42,6 +49,9 @@ jobs:
             playwright-report
             test-results
           retention-days: 7
+      - name: Stop Supabase
+        if: always()
+        run: npx supabase stop --no-backup
 
   # The database tests (supabase/tests: constraints, privileges and who can read what) against a real local Supabase.
   db:

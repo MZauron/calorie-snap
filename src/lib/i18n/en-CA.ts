@@ -11,4 +11,12 @@ export const enCA = {
     tagline: "Snap your plate, see what's left today.",
     comingSoon: "We're getting things ready. Check back soon.",
   },
+  gate: {
+    title: "Calorie Snap is being tested",
+    note: "Enter the password you were given to continue.",
+    label: "Password",
+    submit: "Continue",
+    wrong: "That password isn't right.",
+    tooMany: "Too many tries. Please wait a few minutes and try again.",
+  },
 } as const;
