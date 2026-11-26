@@ -8,7 +8,7 @@ Read CLAUDE.md + only the docs a task names.
 Estimates are session time (1–2 h each).
 
 ## Where we are (2026-11-25)
-- **Built:** T01 scaffold (PR #1). In the repo, the starter kit: `CLAUDE.md`, `docs/DESIGN.md` (from the "Calorie Snap – App Mockup" prototype, on the owner's Next.js + Supabase stack, with the prototype's numbers as worked cases), `docs/schema.sql` + `docs/schema.test.sql` (checks passing on Postgres 16), `docs/QUESTIONS.md`.
+- **Built:** T01 scaffold (PR #1), T02 rules (PR #2). In the repo, the starter kit: `CLAUDE.md`, `docs/DESIGN.md` (from the "Calorie Snap – App Mockup" prototype, on the owner's Next.js + Supabase stack, with the prototype's numbers as worked cases), `docs/schema.sql` + `docs/schema.test.sql` (checks passing on Postgres 16), `docs/QUESTIONS.md`.
 - **Next:** T01, T02 and T03 can run in parallel as phone sessions. Q1, Q3 and Q8 should be answered before T05 and T11.
 
 ## Plan
@@ -26,7 +26,7 @@ Estimates are session time (1–2 h each).
   CI (GitHub Actions): install, lint, typecheck, test, build. Copy `security-headers.ts` (+ tests) and the CI workflow from `../playdate` if attached.
   Done when: `npm run lint && npm run typecheck && npm test && npm run build` pass locally and in CI; `/api/health` answers; the home route renders a placeholder at 375 px.
 
-- [ ] **T02 The numbers (rules)** [phone]
+- [x] **T02 The numbers (rules)** [phone] — done 2026-11-25. Build readings (no product change, in the code comments): the estimated weight counts logged days from the check-in (or start) date through yesterday; "Calories this week" = the 7 days ending today; a model reply over 5000 kcal is scaled down to 5000; note chips apply once each and "scale" chips multiply the meal on top of the portion; typed "+N kcal" is not scaled by the portion.
   `src/lib/rules`: `types.ts` (`Decision = {ok, errors: {code, field?}[]}`, the codes in DESIGN.md), `config.ts` (activity factors, 7700 kcal/kg, minimums, pace options, cap 1%, BMI 18.5, rounding, meal-type times, note-chip adjustments reference), `time.ts` (zone passed in, clock injected; local date of an instant; days between), and modules: `profile.ts` (CS-01, 03 validation), `numbers.ts` (CS-02, 04, 05, 06, 07, 11 — burn, cap, limit, macros, timeline, estimated weight, plan line, difference, projection), `today.ts` (CS-08, 09, 16), `days.ts` (CS-10, 12 — deficits, day status, streak, week bars, "last N full days"), `estimate.ts` (CS-14, 15 — validate and clamp a model reply, apply swaps/removals/adds/chips/+N kcal, portion, totals), `foods.ts` (CS-18), `meals.ts` (CS-19), `tone.ts` (CS-20 — BMI range, banned-words check used by a test over `en-CA.ts`).
   Create `docs/rules.test-cases.md`: every row of DESIGN.md "Worked numbers from the prototype", plus edge cases per rule (female minimum, cap binding, minimum binding, no check-in, empty days, today never Too low, model reply out of range), each with an id (`CS-05b`…), input and expected result. Test names reuse the ids.
   Done when: every case in the file has a test named by its id (a test enforces it, both ways); every worked number from the prototype passes; `no-clock.test.ts` fails if anything in `src/lib/rules` reads the clock or imports I/O.
